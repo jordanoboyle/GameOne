@@ -39,7 +39,11 @@ class GameScene extends Phaser.Scene {
     // logic below defines player movement with conditional
     if (left.isDown) {
       this.player.setVelocityX(-this.playerSpeed);
-    } else if (right.isDown)
+    } else if (right.isDown) {
+      this.player.setVelocityX(this.playerSpeed);
+    } else {
+      this.player.setVelocityX(0);
+    }
 
   }
 }

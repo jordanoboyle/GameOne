@@ -39,13 +39,26 @@ class GameScene extends Phaser.Scene {
     this.cursor = this.input.keyboard.createCursorKeys();  //here we are assigning movement to the keys. 
 
     //TARGET SPRITES
-    this.target = this.add.image(200, sizes.height - 400, "apple").setOrigin(0,0);
+    //this set up allows for readability, adjustment
+    this.target = this.physics.add
+      .image(200, sizes.height - 400, "apple")
+      .setOrigin(0,0)
+      .setMaxVelocity(0, speedDown + 25)
 
 
 
   }
   update() {
-    //Below we are going to define curser movement of the player, passing the player from the constructor
+    //APPLE LOGIC CONTROLLING SPEED
+    if (this.target.y >= sizes.height) {
+      this.target.setY(0);
+    }
+
+    getRandomX() {
+      
+    }
+
+    //PLAYER CONTROLS, passing the player from the constructor
     const { left, right, up, down } = this.cursor; //restricting the cursor to key strokes left and right
     // logic below defines player movement with conditional
     if (left.isDown) {

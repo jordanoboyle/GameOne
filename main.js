@@ -52,10 +52,6 @@ class GameScene extends Phaser.Scene {
       this.player.setVelocityX(-this.playerSpeed);
     } else if (right.isDown) {
       this.player.setVelocityX(this.playerSpeed);
-    } else if (up.isDown) {
-      this.player.setVelocityY(-this.playerSpeed);
-    } else if (down.isDown) {
-      this.player.setVelocityY(this.playerSpeed);
     } else {
       this.player.setVelocityX(0);
       this.player.setVelocityY(0);

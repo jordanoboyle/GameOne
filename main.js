@@ -46,14 +46,19 @@ class GameScene extends Phaser.Scene {
   }
   update() {
     //Below we are going to define curser movement of the player, passing the player from the constructor
-    const { left, right } = this.cursor; //restricting the cursor to key strokes left and right
+    const { left, right, up, down } = this.cursor; //restricting the cursor to key strokes left and right
     // logic below defines player movement with conditional
     if (left.isDown) {
       this.player.setVelocityX(-this.playerSpeed);
     } else if (right.isDown) {
       this.player.setVelocityX(this.playerSpeed);
+    } else if (up.isDown) {
+      this.player.setVelocityY(-this.playerSpeed);
+    } else if (down.isDown) {
+      this.player.setVelocityY(this.playerSpeed);
     } else {
       this.player.setVelocityX(0);
+      this.player.setVelocityY(0);
     }
 
   }

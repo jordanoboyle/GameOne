@@ -11,15 +11,15 @@ const sizes = {
 
 const speedDown = 300;
 
-const gameStartDiv = document.querySelector("#gameStartDiv");
-const gameStartButton = document.querySelector("#gameStartButton");
-const gameEndDiv = document.querySelector("#gameEndDiv");
-const gameWinLoseSpan = document.querySelector("#gameWinLoseSpan");
-const gameEndScoreSpan = document.querySelector("#gameEndScoreSpan");
+// const gameStartDiv = document.querySelector("#gameStartDiv");
+// const gameStartButton = document.querySelector("#gameStartButton");
+// const gameEndDiv = document.querySelector("#gameEndDiv");
+// const gameWinLoseSpan = document.querySelector("#gameWinLoseSpan");
+// const gameEndScoreSpan = document.querySelector("#gameEndScoreSpan");
 
 class GameScene extends Phaser.Scene {
   constructor() {
-    super("scene-game");
+    super("scene");
     this.player;  //essence of OOP in basic games
     this.cursor; //passed to create() and then movement defined
     this.playerSpeed = speedDown + 100; //defines how fast player can go
@@ -56,8 +56,10 @@ class GameScene extends Phaser.Scene {
     this.load.audio("coin", "/assets/coin.mp3");
     this.load.audio("bgMusic", "/assets/bgMusic.mp3");
   }
+
   create() {
-    this.scene.pause("scene");
+
+    this.scene.pause("scene-game");
 
     //Music
     this.coinMusic = this.sound.add("coin");
@@ -158,17 +160,14 @@ class GameScene extends Phaser.Scene {
   }
 
   gameOver () {
-    console.log("Game Over"); //this is a check, just like when we check in REACT
-    this.sys.game.destroy(true)
+    console.log("game over");
   }
-
 }
-
 const config = {
-  type:Phaser.WEBGL,
-  width:sizes.width,
-  height:sizes.height,
-  canvas:gameCanvas,
+  type: Phaser.WEBGL,
+  width: sizes.width,
+  height: sizes.height,
+  canvas: gameCanvas,
   physics: {
     default:"arcade",
     arcade: {
@@ -180,7 +179,5 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-gameStartButton.addEventListener("click", () => {
-  gameStartDiv.computedStyleMap.display = "none";
-  game.scene.resume("scene-game");
-})
+
+
